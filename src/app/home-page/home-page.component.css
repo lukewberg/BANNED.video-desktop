@@ -1,0 +1,25 @@
+.panel{
+    transition:all .75s cubic-bezier(.645, .045, .355, 1);
+    background-color:lightblue;
+    transform:perspective(1000px) rotateX(80deg) rotateY(0) rotate(0) scale(1);
+    width: 80%;
+    height: 100%;
+    border-radius: 8px;
+    transform-style: preserve-3d;
+    margin: 0 auto;
+}
+
+.stackContainer{
+    width: 100%;
+    height: 40%;
+    overflow: hidden;
+    position: relative;
+}
+
+.panel:first-child:hover{
+    border-radius: 0;
+    width: 80%;
+    height: 100%;
+    background-color: greenyellow;
+    transform:perspective(400px) rotateX(0) rotateY(0) rotate(0) scale(1.1)
+}

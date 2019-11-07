@@ -1,0 +1,32 @@
+<div class="container-fluid" style="margin-bottom: .6em; position: relative;">
+  <img class="videoImg" src="{{channel?.videos[0]?.channel?.avatar}}" width="9%" height="9%"
+    style="border-radius: 100%;">
+  <h3 style="font-size: 2.5vw; font-weight: 700; display: inline; bottom: 1%; left: 12%; position: absolute;">
+    {{channel?.videos[0]?.channel?.title}}</h3>
+</div>
+<div class="row">
+  <div class="col" *ngFor="let video of firstVideo" style="width: 100%; height: 100%;">
+    <a [routerLink]="['/video', video._id, video.channel._id]">
+      <img class="videoImg" src="{{video.largeImage}}" style="background-size: cover; border-radius: 8px; width: 100%;">
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col" *ngFor="let video of firstVideo">
+    <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em; height: 3em;">{{video.title | truncate : 70 : true}}
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col" *ngFor="let video of secondVideo" style="margin-top: 1em; width: 100%; height: 100%;">
+    <a [routerLink]="['/video', video._id, video.channel._id]">
+      <img class="videoImg" src="{{video.largeImage}}" style="background-size: cover; border-radius: 8px; width: 100%;">
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col" *ngFor="let video of secondVideo">
+    <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em;">{{video.title | truncate : 70 : true}}</h3>
+  </div>
+</div>
+<div style="border: 1px solid rgb(233, 233, 233); margin-top: 5%; margin-bottom: 5%;"></div>

@@ -1,0 +1,19 @@
+.videoImg {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.23) 5px 3px 6px;
+  transition: box-shadow 400ms;
+}
+
+.videoImg:hover {
+  box-shadow: rgba(0, 0, 0, .23) 10px 10px 6px;
+}
+
+.col-lg-auto {
+  padding-left: 25px;
+  padding-right: 0px;
+  padding-top: 15px;
+}
+
+.col {
+    padding: 0;
+}
