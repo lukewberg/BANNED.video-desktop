@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row" style="width: 100%; height: 100%;">
       <div class="col-lg-auto" style="width: 70%; height: 100%;">
-        <vg-player class="videoImg" style="width: 100%; height: 100%; margin-bottom: 1em;">
+        <vg-player class="videoImg" style="width: 100%; height: 100%; margin-bottom: 1em; border-radius: 8px;">
           <video *ngIf="data" style="width: 100%; height: 100%;" #media #vgHls="vgHls" [vgMedia]="media"
             [vgHls]="data?.data?.getVideo?.directUrl" id="singleVideo" preload="auto" controls crossorigin>
           </video>
