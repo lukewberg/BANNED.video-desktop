@@ -3,12 +3,27 @@
     padding-right: 5px;
 }
 
-.videoImg {
-    cursor: pointer;
+.avatarImg{
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.23) 5px 3px 6px;
   transition: box-shadow 400ms;
+  background-size: cover;
+}
+
+.avatarImg:hover{
+  box-shadow: rgba(0, 0, 0, .23) 10px 10px 6px;
+}
+
+.videoImg {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.23) 5px 3px 6px;
+  transition: all 300ms;
+  background-size: cover;
+  border-radius: 8px;
+  width: 100%;
 }
 
 .videoImg:hover {
   box-shadow: rgba(0, 0, 0, .23) 10px 10px 6px;
+  transform: scale(1.01);
 }
