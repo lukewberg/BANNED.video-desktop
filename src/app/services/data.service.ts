@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { getActiveHomeLayout } from './interfaces/getActiveHomeLayout';
 import { getHomeFeaturedVideos } from './interfaces/getHomeFeaturedVideos';
-import { getDisplayChannel, Channel } from './interfaces/getDisplayChannel';
+import { getDisplayChannel } from './interfaces/getDisplayChannel';
+import { GetChannelRootObject } from './interfaces/getChannel';
 
 
 @Injectable({
@@ -72,6 +73,35 @@ export class DataService {
         'content-type': 'application/json'
       }
     });
+  }
+
+  getChannel(id) {
+    return this.httpClient.post<GetChannelRootObject>(this.APIUrl, JSON.stringify({
+      operationName: 'GetChannel',
+      query: 'query GetChannel($id: String!) {  getChannel(id: $id) {    _id    title    summary    avatar    coverImage    showInfo {      times      phone      __typename    }    featuredVideo {      ...DisplayVideoFields      __typename      directUrl    }    liveStreamVideo {      ...DisplayVideoFields      streamUrl      __typename    }    playlists {      _id      title      videos {        _id        __typename      }      __typename    }    __typename  }}fragment DisplayVideoFields on Video {  _id  title  summary  playCount  largeImage  embedUrl  published  channel {    _id    title    avatar    __typename  }  createdAt  __typename}',
+      variables: {
+        'id': id
+      }
+    }), {
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+  }
+
+  getChannelVideos(id, offset) {
+    return this.httpClient.post<GetChannelRootObject>(this.APIUrl, JSON.stringify({
+      operationName: 'GetChannelVideos',
+      query: 'query GetChannelVideos($id: String!, $offset: Float) {  getChannel(id: $id) {    _id    videos(offset: $offset) {      ...DisplayVideoFields      __typename    }    __typename  }}fragment DisplayVideoFields on Video {  _id  title  summary  playCount  largeImage  embedUrl  published  channel {    _id    title    avatar    __typename  }  createdAt  __typename}',
+      variables: {
+        'id': id,
+        'offset': offset
+      }
+    }), {
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
   }
 
   setChannels(object: object) {

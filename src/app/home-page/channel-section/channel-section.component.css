@@ -1,6 +1,6 @@
 .col {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .avatarImg{
@@ -25,5 +25,5 @@
 
 .videoImg:hover {
   box-shadow: rgba(0, 0, 0, .23) 10px 10px 6px;
-  transform: scale(1.01);
+  transform: scale(1.04);
 }

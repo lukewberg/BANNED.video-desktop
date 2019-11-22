@@ -23,3 +23,13 @@
     background-color: greenyellow;
     transform:perspective(400px) rotateX(0) rotateY(0) rotate(0) scale(1.1)
 }
+
+.avatarImg {
+  box-shadow: rgba(0, 0, 0, 0.23) 5px 3px 6px;
+  transition: box-shadow 400ms;
+  background-size: cover;
+}
+
+.avatarImg:hover {
+  box-shadow: rgba(0, 0, 0, .23) 10px 10px 6px;
+}

@@ -17,6 +17,7 @@ import { VgBufferingModule } from '../../node_modules/videogular2/compiled/buffe
 import { VgStreamingModule } from '../../node_modules/videogular2/compiled/streaming';
 import { IntroComponent } from './intro-page/intro.component';
 import { HeaderComponent } from './header/header.component';
+import { ChannelPageComponent } from './channel-page/channel-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HeaderComponent } from './header/header.component';
     HomePageComponent,
     IntroComponent,
     HeaderComponent,
+    ChannelPageComponent,
 
   ],
   imports: [

@@ -1,21 +1,8 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  HostListener
-} from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
-import {
-  DataService
-} from '../services/data.service';
-import {
-  getDisplayChannel
-} from '../services/interfaces/getDisplayChannel';
-import {
-  slideInOutAnimation
-} from '../animations/slideInOut';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { getDisplayChannel } from '../services/interfaces/getDisplayChannel';
+import { slideInOutAnimation } from '../animations/slideInOut';
 
 @Component({
   selector: 'app-video-page',

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { IntroComponent } from './intro-page/intro.component';
+import { ChannelPageComponent } from './channel-page/channel-page.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: '',
     component: IntroComponent
+  },
+  {
+    path: 'channel/:channel_id',
+    component: ChannelPageComponent
   }
 ];
 

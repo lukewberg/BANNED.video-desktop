@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GetChannel } from '../../services/interfaces/getDisplayChannel';
+import { GetChannel } from '../../services/interfaces/getChannel';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
