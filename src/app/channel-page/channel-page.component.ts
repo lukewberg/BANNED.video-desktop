@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { GetChannel } from '../services/interfaces/getChannel'
+import { GetChannel } from '../services/interfaces/getChannel';
 
 @Component({
   selector: 'app-channel-page',
@@ -22,20 +22,19 @@ export class ChannelPageComponent implements OnInit {
         data => {
           this.channelData = data.data.getChannel;
         }
-      )
+      );
       this.dataService.getChannelVideos(data.get('channel_id'), this.offset).subscribe(
         data => {
           this.videos.push({
             videos: data.data.getChannel.videos
           });
         }
-      )
-    })
+      );
+    });
   }
 
-  @HostListener('window:scroll', ['$event.target'])
-  onScroll(elem) {
-    if ((elem.scrollingElement.scrollTop >= elem.scrollingElement.scrollHeight - elem.documentElement.clientHeight) && this.channelData !== undefined) {
+  onScroll() {
+    if (this.channelData !== undefined) {
       this.offset += 10;
       this.dataService.getChannelVideos(this.channelData._id, this.offset).subscribe(
         data => {

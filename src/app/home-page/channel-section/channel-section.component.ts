@@ -12,6 +12,7 @@ export class ChannelSectionComponent implements OnInit {
   @Input() channel: GetChannel;
   firstVideo: any;
   secondVideo: any;
+  status = true;
 
   constructor() { }
 

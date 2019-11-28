@@ -29,7 +29,6 @@ export class HomePageComponent implements OnInit {
               this.dataService.getDisplayChannel(channel._id).subscribe(data => {
                 this.channels.push(data.data.getChannel);
                 this.dataService.setChannels(data.data.getChannel);
-                console.log(this.channels)
               });
             }
           }

@@ -18,6 +18,8 @@ import { VgStreamingModule } from '../../node_modules/videogular2/compiled/strea
 import { IntroComponent } from './intro-page/intro.component';
 import { HeaderComponent } from './header/header.component';
 import { ChannelPageComponent } from './channel-page/channel-page.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NewsStackComponent } from './news-stack/news-stack.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,11 @@ import { ChannelPageComponent } from './channel-page/channel-page.component';
     IntroComponent,
     HeaderComponent,
     ChannelPageComponent,
+    NewsStackComponent,
 
   ],
   imports: [
+    InfiniteScrollModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

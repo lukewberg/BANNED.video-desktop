@@ -11,12 +11,14 @@
     "e2e": "ng e2e",
     "electron-q": "electron .",
     "electron": "ng build && electron .",
-    "electron-aot": "ng build --prod && electron ."
+    "electron-aot": "ng build --prod && electron .",
+    "package-darwin": "electron-packager . BANNED.video --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win32": "electron-packager . BANNED.video --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.ProductName='BANNED.video'"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.7",
-    "@angular/cdk": "~8.2.3",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.7",
     "@angular/compiler": "~8.2.7",
     "@angular/core": "~8.2.7",
@@ -28,6 +30,7 @@
     "bootstrap": "^4.3.1",
     "hls.js": "^0.12.4",
     "jquery": "^3.4.1",
+    "ngx-infinite-scroll": "^8.0.1",
     "ngx-slick-carousel": "^0.4.6",
     "rxjs": "~6.4.0",
     "slick-carousel": "^1.8.1",
@@ -46,6 +49,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "electron": "^7.0.0",
+    "electron-packager": "^14.1.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

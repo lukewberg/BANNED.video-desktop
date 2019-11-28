@@ -7,19 +7,21 @@
       <source src="{{channelData?.featuredVideo?.directUrl}}" type="video/mp4">
     </video>
   </div>
-  <div (scroll)="onScroll($event)" style="width: 100%; background-color: white; position: absolute; top: 50%;">
-    <div style=" position: relative; width: 100%; margin-bottom: 5%;">
-      <img class="avatarImg" src="{{channelData?.avatar}}"
-        style=" border: 8px solid white; border-radius: 100%; position: absolute; width: 14%; left: 10%; top: -60%;">
-      <div style="margin-left: 25%;">
-        <h3 style="font-size: 3vw; font-weight: 700;">
-          {{channelData?.title}}</h3>
-        <h3 style="font-size: 2vw; font-style: italic;">{{channelData?.summary}}</h3>
-        <h3 style="font-size: 1vw; position: relative; left: -1%;">{{channelData?.showInfo?.times}}</h3>
-      </div>
+</div>
+<div style="width: 100%; background-color: white; position: absolute; top: 50%;" infiniteScroll [scrollWindow]="true"
+  [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+  <div style=" position: relative; width: 100%; margin-bottom: 5%;">
+    <img class="avatarImg" src="{{channelData?.avatar}}"
+      style=" border: 8px solid white; border-radius: 100%; position: absolute; width: 14%; left: 10%; top: -60%;">
+    <div style="margin-left: 25%;">
+      <h3 style="font-size: 3vw; font-weight: 700;">
+        {{channelData?.title}}</h3>
+      <h3 style="font-size: 2vw; font-style: italic;">{{channelData?.summary}}</h3>
+      <h3 style="font-size: 1vw; position: relative; left: -1%;">{{channelData?.showInfo?.times}}</h3>
     </div>
-    <div class="container-fluid" style="padding-right: 5%; padding-left: 5%; margin-bottom: 2%; margin-top: 2%;" *ngFor="let video of videos">
-      <app-channel-section [channel]="video"></app-channel-section>
-    </div>
+  </div>
+  <div class="container-fluid" style="padding-right: 5%; padding-left: 5%; margin-bottom: 2%; margin-top: 2%;"
+    *ngFor="let video of videos">
+    <app-channel-section [channel]="video"></app-channel-section>
   </div>
 </div>

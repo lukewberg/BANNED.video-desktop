@@ -11,6 +11,7 @@ function createWindow() {
         height: 800,
         titleBarStyle: 'hiddenInset',
         webSecurity: false,
+        show: false,
         webPreferences: {
             nodeIntegration: true
         }
@@ -28,6 +29,10 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         win = null
+    })
+
+    win.once('ready-to-show', () => {
+        win.show()
     })
 }
 

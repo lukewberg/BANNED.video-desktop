@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: IntroComponent
+    component: HomePageComponent
   },
   {
     path: 'channel/:channel_id',
