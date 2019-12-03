@@ -33,6 +33,9 @@ function createWindow() {
 
     win.once('ready-to-show', () => {
         win.show()
+        if (process.platform === 'win32'){
+            win.removeMenu();
+        }
     })
 }
 
