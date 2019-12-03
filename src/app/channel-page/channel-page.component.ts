@@ -25,6 +25,7 @@ export class ChannelPageComponent implements OnInit {
       );
       this.dataService.getChannelVideos(data.get('channel_id'), this.offset).subscribe(
         data => {
+          this.channelData = null;
           this.videos = [];
           this.videos.push({
             videos: data.data.getChannel.videos
