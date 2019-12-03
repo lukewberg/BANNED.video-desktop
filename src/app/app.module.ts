@@ -20,6 +20,10 @@ import { HeaderComponent } from './header/header.component';
 import { ChannelPageComponent } from './channel-page/channel-page.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NewsStackComponent } from './news-stack/news-stack.component';
+import { ProgressgliderComponent } from './progressglider/progressglider.component';
+import { MatIconModule } from '@angular/material/icon';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NgxElectronModule } from 'ngx-electron';
 
 @NgModule({
   declarations: [
@@ -32,9 +36,13 @@ import { NewsStackComponent } from './news-stack/news-stack.component';
     HeaderComponent,
     ChannelPageComponent,
     NewsStackComponent,
+    ProgressgliderComponent,
+    SidebarComponent,
 
   ],
   imports: [
+    NgxElectronModule,
+    MatIconModule,
     InfiniteScrollModule,
     BrowserModule,
     AppRoutingModule,

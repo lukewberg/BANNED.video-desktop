@@ -1,0 +1,20 @@
+.background {
+    height: 100%;
+    width: 5px;
+    background: #00B4E4;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.progress {
+    transition: all .6s;
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    z-index:2;
+}

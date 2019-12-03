@@ -1,12 +1,15 @@
   <div class="header shadow-lg section">
     <div class="logodiv">
-      <a routerLink="/home">
         <img class="logo" src='./assets/logo.svg'>
-      </a>
     </div>
+    <div style="display: flex; align-items: center; margin: 0 auto; width: 30%; height: 70%; z-index: 10;">
+      <input class="search" placeholder="Search" type="text">
+      <mat-icon class="searchIcon">search</mat-icon>
+    </div>
+    <mat-icon (click)="store()" class="storeIcon">shopping_cart</mat-icon>
     <div
-      style="display: inline-block; position: absolute; right: -45px; top: 40px; height: 100%; width: 200px; background-color: red; text-align: center; transform: rotate(45deg); box-shadow: rgba(0, 0, 0, 0.23) 8px 13px 6px">
+      style="display: inline-block; position: absolute; right: -45px; top: 40px; height: 34px; width: 200px; background-color: red; text-align: center; transform: rotate(45deg); box-shadow: rgba(0, 0, 0, 0.23) 8px 13px 6px">
       <h3 style="color: white;">ALPHA</h3>
     </div>
   </div>
-  <div style="height: 35px;"></div>
+  <div style="height: 48px;"></div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor( private ElectronService: ElectronService ) { }
 
   ngOnInit() {
+  }
+
+  store() {
+    this.ElectronService.shell.openExternal('https://www.infowarsstore.com/');
   }
 
 }

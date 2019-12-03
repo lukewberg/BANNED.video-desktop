@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { GetChannel } from '../services/interfaces/getChannel';
@@ -25,6 +25,7 @@ export class ChannelPageComponent implements OnInit {
       );
       this.dataService.getChannelVideos(data.get('channel_id'), this.offset).subscribe(
         data => {
+          this.videos = [];
           this.videos.push({
             videos: data.data.getChannel.videos
           });

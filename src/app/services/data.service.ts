@@ -5,6 +5,7 @@ import { getActiveHomeLayout } from './interfaces/getActiveHomeLayout';
 import { getHomeFeaturedVideos } from './interfaces/getHomeFeaturedVideos';
 import { getDisplayChannel } from './interfaces/getDisplayChannel';
 import { GetChannelRootObject } from './interfaces/getChannel';
+import { GetActiveSideBarChannels } from './interfaces/getActiveSideBarChannels'
 
 
 @Injectable({
@@ -29,6 +30,19 @@ export class DataService {
     }), {
       headers: {
         'content-type': 'application/json'
+      }
+    });
+  }
+
+  getActiveSideBarChannels() {
+    return this.httpClient.post<GetActiveSideBarChannels>(this.APIUrl, JSON.stringify({
+      operationName: 'GetActiveSideBarChannels',
+      query: 'query GetActiveSideBarChannels {  getActiveHomeLayout {    _id    navigationChannels {      _id      title      avatar      __typename    }    pageItemsOrder    __typename  }}',
+      variables: {}
+    }), {
+      headers: {
+        'content-type': 'application/json'
+
       }
     });
   }
