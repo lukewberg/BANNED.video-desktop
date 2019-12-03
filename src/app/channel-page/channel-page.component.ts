@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { GetChannel } from '../services/interfaces/getChannel';
@@ -8,13 +8,17 @@ import { GetChannel } from '../services/interfaces/getChannel';
   templateUrl: './channel-page.component.html',
   styleUrls: ['./channel-page.component.css']
 })
-export class ChannelPageComponent implements OnInit {
+export class ChannelPageComponent implements OnInit, OnChanges {
 
   channelData: GetChannel;
   offset = 0;
   videos = [];
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
+
+  ngOnChanges(){
+    this.videos = [];
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe( data => {
@@ -25,8 +29,6 @@ export class ChannelPageComponent implements OnInit {
       );
       this.dataService.getChannelVideos(data.get('channel_id'), this.offset).subscribe(
         data => {
-          this.channelData = null;
-          this.videos = [];
           this.videos.push({
             videos: data.data.getChannel.videos
           });

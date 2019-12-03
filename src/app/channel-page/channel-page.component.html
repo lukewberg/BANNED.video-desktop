@@ -1,11 +1,8 @@
-<div *ngIf="channelData">
-  <div style="width: 100%; height: 50%; overflow: hidden; position: fixed; z-index: -1;">
-    <video [muted]="'true'" #video (timeupdate)="onTimeUpdate($event)" (loadedmetadata)="onMetadata($event, video)"
-      *ngIf=" channelData" style="background-size: cover; width: 100%; transform: translateY(-20%);"
-      autoplay="autoplay">
-      <source src="{{channelData?.featuredVideo?.directUrl}}" type="video/mp4">
-    </video>
-  </div>
+<div style="width: 100%; height: 50%; overflow: hidden; position: fixed; z-index: -1;">
+  <video [muted]="'true'" #video (timeupdate)="onTimeUpdate($event)" (loadedmetadata)="onMetadata($event, video)"
+    *ngIf=" channelData?.featuredVideo !== null" style="background-size: cover; width: 100%; transform: translateY(-20%);" autoplay="autoplay"[src]="channelData?.featuredVideo?.directUrl" type="video/mp4">
+  </video>
+  <img *ngIf="channelData?.featuredVideo == null && channelData" [src]="channelData?.coverImage" style="background-size: cover; width: 100%; transform: translateY(-30%);">
 </div>
 <div style="width: 100%; background-color: white; position: absolute; top: 50%;" infiniteScroll [scrollWindow]="true"
   [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
@@ -15,7 +12,7 @@
     <div style="margin-left: 25%;">
       <h3 style="font-size: 3vw; font-weight: 700;">
         {{channelData?.title}}</h3>
-      <h3 style="font-size: 2vw; font-style: italic;">{{channelData?.summary}}</h3>
+      <h3 *ngIf="channelData" style="font-size: 2vw; font-style: italic;">{{channelData?.summary | truncate: 60}}</h3>
       <h3 style="font-size: 1vw; position: relative; left: -1%;">{{channelData?.showInfo?.times}}</h3>
     </div>
   </div>
