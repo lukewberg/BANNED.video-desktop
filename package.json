@@ -13,8 +13,8 @@
     "electron-q": "electron .",
     "electron": "ng build --base-href ./ && electron .",
     "electron-aot": "ng build --base-href ./ --prod && electron .",
-    "package-darwin": "electron-packager . BANNED.video --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
-    "package-win32": "electron-packager . BANNED.video --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.ProductName='BANNED.video'"
+    "package-darwin": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win32": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.ProductName='BANNED.video'"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "~8.2.7",
     "@angular/router": "~8.2.7",
     "bootstrap": "^4.3.1",
+    "electron-is-dev": "^1.1.0",
     "hls.js": "^0.12.4",
     "jquery": "^3.4.1",
     "ngx-electron": "^2.2.0",

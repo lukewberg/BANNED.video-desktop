@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+const isDev = require('electron-is-dev');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,7 +22,11 @@ function createWindow() {
     win.loadFile(`${__dirname}/dist/infowars-desktop/index.html`)
 
     // Open the DevTools.
-    win.webContents.openDevTools()
+    if (isDev) {
+        win.webContents.openDevTools()
+    } else {
+        console.log('Running in production');
+    }
 
     // Emitted when the window is closed.
     win.on('closed', () => {
