@@ -38,11 +38,11 @@
 .searchIcon {
   transition: all .5s;
   color: white;
-  font-size: 2vw;
+  font-size: 240%;
   background-color: rgb(60, 60, 60);
   height: 100%;
   text-align: center;
-  width: 1.5em;
+  width: 10%;
   cursor: pointer;
 }
 

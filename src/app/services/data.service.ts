@@ -5,7 +5,8 @@ import { getActiveHomeLayout } from './interfaces/getActiveHomeLayout';
 import { getHomeFeaturedVideos } from './interfaces/getHomeFeaturedVideos';
 import { getDisplayChannel } from './interfaces/getDisplayChannel';
 import { GetChannelRootObject } from './interfaces/getChannel';
-import { GetActiveSideBarChannels } from './interfaces/getActiveSideBarChannels'
+import { GetActiveSideBarChannels } from './interfaces/getActiveSideBarChannels';
+import { SearchRootObject } from './interfaces/Search';
 
 
 @Injectable({
@@ -21,6 +22,23 @@ export class DataService {
   public  navigationChannels: any;
 
   constructor(private httpClient: HttpClient) {}
+
+  Search(query: string, offset: number){
+    return this.httpClient.post<SearchRootObject>(this.APIUrl, JSON.stringify({
+      operationName: 'Search',
+      query: 'query Search($query: String!, $category: String!, $limit: Float, $offset: Float) {  search(query: $query, category: $category, limit: $limit, offset: $offset) {    videos {      ...DisplayVideoFields      __typename    }    __typename  }}fragment DisplayVideoFields on Video {  _id  title  summary  playCount  largeImage  embedUrl  published  videoDuration  channel {    _id    title    avatar    __typename  }  createdAt  __typename}',
+      variables: {
+        category: 'VIDEO',
+        limit: 20,
+        offset: offset,
+        query: query
+      }
+    }), {
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+  }
 
   getActiveHomeLayout() {
     return this.httpClient.post<getActiveHomeLayout>(this.APIUrl, JSON.stringify({

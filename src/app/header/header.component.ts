@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,19 @@ import { ElectronService } from 'ngx-electron';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private ElectronService: ElectronService ) { }
+  query: string;
+
+  constructor( private Router: Router, private ElectronService: ElectronService) { }
 
   ngOnInit() {
   }
 
   store() {
     this.ElectronService.shell.openExternal('https://www.infowarsstore.com/');
+  }
+
+  Search(){
+    this.Router.navigateByUrl('/search/' + this.query);
   }
 
 }

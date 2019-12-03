@@ -1,0 +1,16 @@
+<div class="container-fluid"
+  style=" height: 100%; padding-left: 6%; padding-right: 4%; overflow-y: scroll; margin-bottom: 2%; padding-top: 2%;"
+  infiniteScroll [scrollWindow]="false" [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
+  <h1 style="margin-bottom: 2%;">Search Results:</h1>
+  <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; background-color: white;">
+    <div style="width: 30%; margin-left: 2%; margin-bottom: 2%; height: 100%;" *ngFor="let video of videos">
+      <a [routerLink]="['/video', video._id, video.channel._id]">
+        <img class="videoImg" src="{{video.largeImage}}">
+      </a>
+      <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em;">
+        {{video.title | truncate : 50 : true}}
+      </h3>
+    </div>
+  </div>
+</div>

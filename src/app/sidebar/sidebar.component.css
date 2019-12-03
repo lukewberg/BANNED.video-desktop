@@ -10,12 +10,12 @@
   margin-bottom: 1em;
   position: fixed;
   z-index: 2;
-  background-color: #1E2022;
+  background-color: #253746;
   top: 48px;
   padding-bottom: 1em;
   padding-top: .02em;
-  border-bottom: .3em solid #1E2022;
-  border-top: .3em solid #1E2022;
+  border-bottom: .3em solid #253746;
+  border-top: .3em solid #253746;
 }
 
 .mat-icon:hover {
@@ -23,7 +23,7 @@
 }
 
 .sidebar {
-    background-color: #1E2022;
+    background-color: #253746;
     width: 55px;
     height: 96%;
     position: fixed;
@@ -34,7 +34,7 @@
 }
 
 .dashDiv {
-  background-color: #1E2022;
+  background-color: #253746;
   width: 55px;
   height: 6em;
   z-index: 1;

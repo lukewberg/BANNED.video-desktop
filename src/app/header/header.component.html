@@ -3,8 +3,8 @@
         <img class="logo" src='./assets/logo.svg'>
     </div>
     <div style="display: flex; align-items: center; margin: 0 auto; width: 30%; height: 70%; z-index: 10;">
-      <input class="search" placeholder="Search" type="text">
-      <mat-icon class="searchIcon">search</mat-icon>
+      <input [(ngModel)]="query" class="search" placeholder="Search" type="text">
+      <mat-icon (click)="Search()" class="searchIcon">search</mat-icon>
     </div>
     <mat-icon (click)="store()" class="storeIcon">shopping_cart</mat-icon>
     <div

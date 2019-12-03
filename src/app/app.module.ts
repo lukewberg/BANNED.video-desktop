@@ -24,6 +24,8 @@ import { ProgressgliderComponent } from './progressglider/progressglider.compone
 import { MatIconModule } from '@angular/material/icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgxElectronModule } from 'ngx-electron';
+import { SearchPageComponent } from './search-page/search-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,11 @@ import { NgxElectronModule } from 'ngx-electron';
     NewsStackComponent,
     ProgressgliderComponent,
     SidebarComponent,
+    SearchPageComponent,
 
   ],
   imports: [
+    FormsModule,
     NgxElectronModule,
     MatIconModule,
     InfiniteScrollModule,
