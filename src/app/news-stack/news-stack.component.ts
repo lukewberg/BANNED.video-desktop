@@ -31,30 +31,32 @@ export class NewsStackComponent implements OnInit {
     setTimeout( () => {
       if (this.news.length !== 0 && this.interval) {
         this.news.forEach(video => {
-          if (video.zIndex === this.news.length) {
+          if (video.zIndex+1 === this.news.length) {
             video.zIndex = 0;
-            video.offsetRatio = this.staticOffsetRatio;
+            video.offsetRatio = this.staticOffsetRatio-4;
             video.visible = false;
           } else {
             video.zIndex += 1;
             video.offsetRatio -= 4;
             video.frontItem = false;
-            if (video.zIndex > this.news.length - 4) {
+            if (video.zIndex+1 > this.news.length - 4) {
               video.visible = true;
+              video.faded = true;
             }
-            if (video.zIndex === this.news.length) {
+            if (video.zIndex+1 === this.news.length) {
               this.headline = video.title;
               this.description = video.summary;
+              video.faded = false;
               video.frontItem = true;
             }
           }
         });
       }
-    }, 1000);
+    }, 2000);
   }
 
   loop() {
-    interval(4000).subscribe( x => {
+    interval(5000).subscribe( x => {
         this.moveStack();
         });
     }
@@ -65,6 +67,8 @@ ngOnInit() {
       data => {
         this.staticOffsetRatio = (data.data.getActiveHomeLayout.featuredVideos.length * 4);
         this.zIndex = data.data.getActiveHomeLayout.featuredVideos.length;
+        console.log(data.data.getActiveHomeLayout.featuredVideos);
+        console.log(data.data.getActiveHomeLayout.featuredVideos.length);
         data.data.getActiveHomeLayout.featuredVideos.forEach(
           video => {
             this.zIndex -= 1;
@@ -73,6 +77,7 @@ ngOnInit() {
             video['offsetRatio'] = this.offsetRatio;
             video['frontItem'] = false;
             video['visible'] = false;
+            video['faded'] = false;
             this.news.push(video);
             this.headline = this.news[0].title;
             this.description = this.news[0].summary;

@@ -1,15 +1,28 @@
-  <div class="header shadow-lg section">
-    <div class="logodiv">
-        <img class="logo" src='./assets/logo.svg'>
-    </div>
-    <div style="display: flex; align-items: center; margin: 0 auto; width: 30%; height: 70%; z-index: 10;">
-      <input [(ngModel)]="query" class="search" placeholder="Search" type="text">
-      <mat-icon (click)="Search()" class="searchIcon">search</mat-icon>
-    </div>
-    <mat-icon (click)="store()" class="storeIcon">shopping_cart</mat-icon>
-    <div
-      style="display: inline-block; position: absolute; right: -45px; top: 40px; height: 34px; width: 200px; background-color: red; text-align: center; transform: rotate(45deg); box-shadow: rgba(0, 0, 0, 0.23) 8px 13px 6px">
-      <h3 style="color: white;">ALPHA</h3>
-    </div>
+<div class="header">
+  <div class="logodiv">
+    <img class="logo" src='./assets/logo.svg'>
   </div>
-  <div style="height: 48px;"></div>
+  <div class="liveTV">
+    <div style="background-color: red; width: 10px; height: 10px; border-radius: 100%; animation: shadow-pulse 2s infinite; 
+        margin-top: auto; margin-bottom: auto;">
+    </div>
+    <h3
+      style="color: white; font-size: 1.3vw; margin-top: auto; margin-bottom: auto; margin-left: .6em; font-style: italic;">
+      Live TV</h3>
+  </div>
+  <div style="display: flex; align-items: center; width: 30%; height: 70%; margin: 0 auto;">
+    <input [(ngModel)]="query" class="search" placeholder="Search" type="text">
+    <mat-icon (click)="Search()" class="searchIcon">search</mat-icon>
+  </div>
+  <div class="storeDiv">
+    <mat-icon (click)="store()" class="storeIcon">shopping_cart</mat-icon>
+    <mat-icon class="updateIcon" [ngStyle]="{'color': updateStatus}">
+      system_update_alt</mat-icon>
+  </div>
+  <div style="position: absolute; right: -45px; top: 40px; height: 34px; width:
+      200px; background-color: red; text-align: center; transform: rotate(45deg); box-shadow: rgba(0, 0, 0, 0.23) 8px
+      13px 6px">
+    <h3 style="color: white;">ALPHA</h3>
+  </div>
+</div>
+<div style="height: 48px;"></div>

@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DataService } from './services/data.service';
+import { IpcService } from './services/ipc.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ChannelSectionComponent } from './home-page/channel-section/channel-section.component';
 import { TruncatePipe } from './truncate.pipe';
 import { VideoPageComponent } from './video-page/video-page.component';
@@ -52,14 +52,13 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SlickCarouselModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
     VgStreamingModule
   ],
-  providers: [DataService],
+  providers: [DataService, IpcService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

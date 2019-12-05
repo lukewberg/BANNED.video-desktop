@@ -6,7 +6,7 @@
   <div class="card-container">
     <div style="position: relative; width: 100%; height: 100%;">
       <div (mouseenter)="pause()" (mouseleave)="play()" *ngFor="let video of news"
-        [ngClass]="{'news-card': true, 'news-cardHover': video?.frontItem, 'hidden': !video?.visible}"
+        [ngClass]="{'news-card': true, 'news-cardHover': video?.frontItem, 'hidden': !video?.visible, 'faded': video?.faded}"
         [ngStyle]="{'z-index': video?.zIndex, 'left': video?.offsetRatio + '%', 'bottom': video?.offsetRatio + '%'}">
         <a [routerLink]="['/video', video._id, video.channel._id]" class="news-card-img"
           [ngStyle]="{'background-image':'url(' + video?.largeImage + ')'}"></a>

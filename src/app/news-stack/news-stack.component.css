@@ -8,7 +8,6 @@
    transform-origin:center;
    background-size: cover;
    position: absolute;
-   opacity: 100%;
 }
 
 .news-cardHover:hover{
@@ -18,7 +17,6 @@
 
 .news-cardHover:hover,
 .news-cardHover:hover .news-card-img {
-  transition: all .5s ease;
   border-radius: 20px;
 }
 
@@ -26,6 +24,13 @@
     opacity: 0;
 }
 
+.faded {
+    background-color: white;
+}
+
+.faded a {
+    opacity: 70%;
+}
 .news-card-img {
     display:block;
     width:100%;
@@ -34,7 +39,7 @@
     background-repeat:no-repeat;
     background-position:50%;
     border-radius:20px;
-    transition:all 3s cubic-bezier(.645, .045, .355, 1);
+    transition:all .5s cubic-bezier(.645, .045, .355, 1);
     cursor: pointer;
 }
 

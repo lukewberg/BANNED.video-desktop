@@ -1,8 +1,14 @@
 {
   "name": "BANNED.Video",
-  "version": "0.0.0",
+  "version": "0.1.4-alpha",
+  "description": "The premier platform for accessing INFOWARS content!",
   "main": "main.js",
   "target": "electron",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukewberg/BANNED.video-desktop.git"
+  },
+  "author": "Luke Berg",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,8 +19,40 @@
     "electron-q": "electron .",
     "electron": "ng build --base-href ./ && electron .",
     "electron-aot": "ng build --base-href ./ --prod && electron .",
-    "package-darwin": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
-    "package-win32": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.ProductName='BANNED.video'"
+    "package-darwin": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --asar --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win32": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.ProductName='BANNED.video'",
+    "pack": "electron-builder -mw --dir",
+    "dist": "electron-builder -mw"
+  },
+  "build": {
+    "appId": "com.electron.BANNED.Video",
+    "productName": "BANNED.Video",
+    "directories": {
+      "output": "release-builds"
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "prerelease"
+    },
+    "mac": {
+      "category": "public.app-category.news",
+      "type": "distribution"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "perMachine": true,
+      "createDesktopShortcut": "always"
+    }
   },
   "private": true,
   "dependencies": {
@@ -30,13 +68,14 @@
     "@angular/router": "~8.2.7",
     "bootstrap": "^4.3.1",
     "electron-is-dev": "^1.1.0",
+    "electron-updater": "^4.2.0",
     "hls.js": "^0.12.4",
     "jquery": "^3.4.1",
+    "moment-timezone": "^0.5.27",
     "ngx-electron": "^2.2.0",
     "ngx-infinite-scroll": "^8.0.1",
-    "ngx-slick-carousel": "^0.4.6",
+    "npm-lifecycle": "^3.1.4",
     "rxjs": "~6.4.0",
-    "slick-carousel": "^1.8.1",
     "tslib": "^1.10.0",
     "video.js": "^7.6.5",
     "videogular2": "^7.0.1",
@@ -51,6 +90,7 @@
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^5.0.0",
     "electron": "^7.0.0",
+    "electron-builder": "^22.2.0",
     "electron-packager": "^14.1.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
