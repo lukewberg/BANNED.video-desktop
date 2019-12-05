@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
     this.ElectronService.ipcRenderer.on('update-downloaded', () => {
       this.updateStatus = 'greenyellow';
       console.log('update downloaded!');
+      this.ElectronService.ipcRenderer.send('quit-and-install');
     });
 
     this.ElectronService.ipcRenderer.on('download-progress', (event, info) => {

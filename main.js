@@ -54,9 +54,8 @@ app.on('ready', () => {
     autoUpdater.checkForUpdatesAndNotify()
 })
 
-ipcMain.on('test', (event) => {
-    console.log('test worked, replying')
-    event.reply('update-downloaded')
+ipcMain.on('quit-and-install', (event) => {
+    autoUpdater.quitAndInstall()
 })
 
 // Quit when all windows are closed.
@@ -97,8 +96,6 @@ autoUpdater.on('download-progress', (progressObj) => {
     // log_message = log_message + ' - Downloaded ' + progressObj.percent + '%'
     // log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')'
     // dispatch(log_message)
-
-    win.webContents.send('download-progress', progressObj.percent)
 
 })
 // In this file you can include the rest of your app's specific main process
