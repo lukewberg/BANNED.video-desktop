@@ -4,7 +4,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { IntroComponent } from './intro-page/intro.component';
 import { ChannelPageComponent } from './channel-page/channel-page.component';
-import { SearchPageComponent } from './search-page/search-page.component'
+import { SearchPageComponent } from './search-page/search-page.component';
+import { LivestreamComponent } from './livestream/livestream.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'search/:search_query',
     component: SearchPageComponent
+  },
+  {
+    path: 'stream',
+    component: LivestreamComponent
   }
 ];
 

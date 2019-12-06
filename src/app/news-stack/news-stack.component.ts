@@ -20,11 +20,74 @@ export class NewsStackComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   pause() {
-    this.interval = false;
+    if (this.interval){
+      this.interval = false;
+    }
   }
 
   play() {
-    this.interval = true;
+    if (this.interval) {
+      this.interval = true;
+    }
+  }
+
+  resume(){
+    this.interval = !this.interval;
+  }
+
+  backward() {
+    if (this.news.length !== 0) {
+      this.news.forEach(video => {
+
+        if ((video.zIndex + 1 > this.news.length - 4)) {
+          video.visible = true;
+          video.faded = true;
+        } else {
+          video.visible = false;
+        }
+
+        if (video.zIndex === 0){
+          video.zIndex = this.news.length - 1;
+          video.offsetRatio = 0;
+          video.visible = true;
+          video.frontItem = true;
+          video.faded = false;
+          this.headline = video.title;
+          this.description = video.summary;
+        } else {
+          video.zIndex -= 1;
+          video.offsetRatio += 4;
+          video.frontItem = false;
+        }
+
+      });
+    }
+  }
+
+  forward() {
+    if (this.news.length !== 0 ) {
+      this.news.forEach(video => {
+        if (video.zIndex + 1 === this.news.length) {
+          video.zIndex = 0;
+          video.offsetRatio = this.staticOffsetRatio - 4;
+          video.visible = false;
+        } else {
+          video.zIndex += 1;
+          video.offsetRatio -= 4;
+          video.frontItem = false;
+          if (video.zIndex + 1 > this.news.length - 4) {
+            video.visible = true;
+            video.faded = true;
+          }
+          if (video.zIndex + 1 === this.news.length) {
+            this.headline = video.title;
+            this.description = video.summary;
+            video.faded = false;
+            video.frontItem = true;
+          }
+        }
+      });
+    }
   }
 
   moveStack() {
@@ -67,8 +130,6 @@ ngOnInit() {
       data => {
         this.staticOffsetRatio = (data.data.getActiveHomeLayout.featuredVideos.length * 4);
         this.zIndex = data.data.getActiveHomeLayout.featuredVideos.length;
-        console.log(data.data.getActiveHomeLayout.featuredVideos);
-        console.log(data.data.getActiveHomeLayout.featuredVideos.length);
         data.data.getActiveHomeLayout.featuredVideos.forEach(
           video => {
             this.zIndex -= 1;
@@ -79,8 +140,8 @@ ngOnInit() {
             video['visible'] = false;
             video['faded'] = false;
             this.news.push(video);
-            this.headline = this.news[0].title;
-            this.description = this.news[0].summary;
+            //this.headline = this.news[0].title;
+            //this.description = this.news[0].summary;
           }
         );
       }

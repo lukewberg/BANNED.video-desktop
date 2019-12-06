@@ -96,6 +96,7 @@
   height: 100%;
   width: 8%;
   cursor: pointer;
+  outline: none;
 }
 
 .liveTV:hover {

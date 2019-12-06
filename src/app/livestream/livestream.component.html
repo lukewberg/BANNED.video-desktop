@@ -1,0 +1,21 @@
+<div style="display: flex; flex-direction: row; position: absolute; left: 55px; right: 0; top: 48px; bottom: 0;">
+    <div class="nowPlaying" [ngStyle]="{'opacity': displayStatus == true ? '1' : '0'}">
+        <img src="{{channel?.avatar}}" style="height: 100%; margin-right: .5em;">
+        <div *ngIf="channel" style="height: 100%; width: 100%; display: flex; flex-direction: column; padding-top: .5em;">
+            <h3 style="font-size: 1.5vw; color: white; width: 100%;">Now Playing:</h3>
+            <h3 style="font-size: 1.1vw; color: white; width: 100%; font-style: italic;">{{channel?.title}}</h3>
+            <div style="width: 100%; display: flex; flex-direction: row; margin-left: .5em;">
+                <div style="background-color: red; width: 10px; height: 10px; border-radius: 100%; animation: shadow-pulse 2s infinite; margin-top: auto; margin-bottom: auto;">
+                </div>
+                <h3
+                  style="color: white; font-size: 1.3vw; margin-top: auto; margin-bottom: auto; margin-left: .6em; font-style: italic;">
+                  LIVE TV</h3>
+            </div>
+        </div>
+    </div>
+    <vg-player (mouseenter)="displayStatus = true" (mouseleave)="displayStatus = false" style="width: 100%; height: 100%;">
+      <video *ngIf="channel" style="width: 100%; height: 100%;" #media #vgHls="vgHls" [vgMedia]="media"
+        [vgHls]="channel?.liveStreamVideo?.streamUrl" id="singleVideo" preload="auto" controls crossorigin autoplay>
+      </video>
+    </vg-player>
+</div>

@@ -26,6 +26,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FormsModule } from '@angular/forms';
+import { LivestreamComponent } from './livestream/livestream.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     ProgressgliderComponent,
     SidebarComponent,
     SearchPageComponent,
+    LivestreamComponent,
 
   ],
   imports: [

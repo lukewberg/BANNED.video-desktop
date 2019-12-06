@@ -1,6 +1,6 @@
 {
   "name": "BANNED.Video",
-  "version": "0.1.5-alpha",
+  "version": "0.1.6-alpha",
   "description": "The premier platform for accessing INFOWARS content!",
   "main": "main.js",
   "target": "electron",
@@ -71,6 +71,7 @@
     "electron-updater": "^4.2.0",
     "hls.js": "^0.12.4",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "ngx-electron": "^2.2.0",
     "ngx-infinite-scroll": "^8.0.1",

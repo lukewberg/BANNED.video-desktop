@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Router } from '@angular/router';
-import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +15,6 @@ export class HeaderComponent implements OnInit {
   constructor( private Router: Router, private ElectronService: ElectronService) { }
 
   ngOnInit() {
-    console.log(moment().tz('America/Chicago').format('hh z'));
     this.ElectronService.ipcRenderer.on('update-available', () => {
       this.updateStatus = 'yellow';
       console.log('app update available!!');
@@ -25,12 +23,17 @@ export class HeaderComponent implements OnInit {
     this.ElectronService.ipcRenderer.on('update-downloaded', () => {
       this.updateStatus = 'greenyellow';
       console.log('update downloaded!');
-      this.ElectronService.ipcRenderer.send('quit-and-install');
     });
 
     this.ElectronService.ipcRenderer.on('download-progress', (event, info) => {
       console.log(info);
-    })
+    });
+  }
+
+  update() {
+    if (this.updateStatus === 'greenyellow') {
+      this.ElectronService.ipcRenderer.send('quit-and-install');
+    }
   }
 
   store() {

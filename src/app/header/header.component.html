@@ -2,13 +2,13 @@
   <div class="logodiv">
     <img class="logo" src='./assets/logo.svg'>
   </div>
-  <div class="liveTV">
+  <div class="liveTV" [routerLink]="['/stream']">
     <div style="background-color: red; width: 10px; height: 10px; border-radius: 100%; animation: shadow-pulse 2s infinite; 
         margin-top: auto; margin-bottom: auto;">
     </div>
     <h3
       style="color: white; font-size: 1.3vw; margin-top: auto; margin-bottom: auto; margin-left: .6em; font-style: italic;">
-      Live TV</h3>
+      LIVE TV</h3>
   </div>
   <div style="display: flex; align-items: center; width: 30%; height: 70%; margin: 0 auto;">
     <input [(ngModel)]="query" class="search" placeholder="Search" type="text">
@@ -16,7 +16,7 @@
   </div>
   <div class="storeDiv">
     <mat-icon (click)="store()" class="storeIcon">shopping_cart</mat-icon>
-    <mat-icon class="updateIcon" [ngStyle]="{'color': updateStatus}">
+    <mat-icon class="updateIcon" (click)="update()" [ngStyle]="{'color': updateStatus}">
       system_update_alt</mat-icon>
   </div>
   <div style="position: absolute; right: -45px; top: 40px; height: 34px; width:
