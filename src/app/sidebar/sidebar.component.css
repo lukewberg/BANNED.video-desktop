@@ -31,13 +31,15 @@
     bottom: 0;
     z-index: 1;
     overflow-y: scroll;
+    overflow-x: visible;
 }
 
 .dashDiv {
   background-color: #253746;
   width: 55px;
-  height: 6em;
+  height: 15%;
   z-index: 1;
+  max-height: 6.5em;
 }
 
 .sidebar::-webkit-scrollbar{
@@ -46,8 +48,11 @@
 
 .channelIcon {
   transition: all .3s;
+  border-radius: 50%;
 }
 
 .channelIcon:hover {
-  border: 2px solid #00B4E4;
+  border: 1px solid #00B4E4;
+  border-radius: 20%;
+  transform: scale(1.2);
 }

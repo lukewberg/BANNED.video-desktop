@@ -2,8 +2,8 @@
     transition: all .5s;
     display: flex;
     flex-direction: row;
-    width: 17.5em;
-    height: 100px;
+    width: auto;
+    height: 7vw;
     border-bottom-right-radius: 100px;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
@@ -21,6 +21,7 @@
 
     overflow-x: hidden;
 }
+
 
 @keyframes shadow-pulse {
   0% {

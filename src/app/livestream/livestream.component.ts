@@ -38,10 +38,11 @@ export class LivestreamComponent implements OnInit {
 
   waitForNextShow(timeout: number){
     setTimeout( () => {
+      console.log(timeout)
       for (let show of this.showInfo) {
         var texasTime = this.calcTime(-6).getHours()
         if ((texasTime >= show.startTime) && (texasTime < show.endTime)) {
-          console.log(show);
+          console.log(show + 'sleep function');
           this.DataService.getChannel(show._id).subscribe(data => {
             this.channel = data.data.getChannel;
           })
@@ -66,7 +67,7 @@ export class LivestreamComponent implements OnInit {
 
   secondsToShow(startTime: number) {
       var d = this.calcTime(-6);
-      return ((-d + d.setHours(startTime, 0, 0, 0)) / 6e4) * 60;
+      return ((((-d + d.setHours(startTime, 0, 0, 0)) / 6e4) * 60) *60) *1000;
     }
 
   ngOnInit() {
@@ -79,7 +80,7 @@ export class LivestreamComponent implements OnInit {
         })
       } else if (show.startTime > texasTime){
         this.waitForNextShow(this.secondsToShow(show.startTime));
-        console.log('Next show starts in: ' + this.secondsToShow(show.startTime)/60 + ' minutes');
+        console.log('Next show starts in: ' + this.secondsToShow(show.startTime)/60/60/1000 + ' minutes');
         break;
       }
     }

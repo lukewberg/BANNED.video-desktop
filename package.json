@@ -1,6 +1,6 @@
 {
   "name": "BANNED.Video",
-  "version": "0.1.6-alpha",
+  "version": "0.1.7-alpha",
   "description": "The premier platform for accessing INFOWARS content!",
   "main": "main.js",
   "target": "electron",
@@ -12,7 +12,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -21,8 +21,10 @@
     "electron-aot": "ng build --base-href ./ --prod && electron .",
     "package-darwin": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --asar --platform=darwin --arch=x64 --prune=true --out=release-builds",
     "package-win32": "ng build --base-href ./ --prod && electron-packager . BANNED.video --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.ProductName='BANNED.video'",
-    "pack": "electron-builder build --mac --win --publish never",
-    "deploy": "electron-builder build --mac --win --publish always"
+    "pack-win": "electron-builder build --win --publish never",
+    "pack-mac": "electron-builder build --mac --publish never",
+    "deploy-win": "electron-builder build --win --publish always",
+    "deploy-mac": "electron-builder build --mac --publish always"
   },
   "build": {
     "appId": "com.electron.BANNED.Video",
