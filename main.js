@@ -55,7 +55,7 @@ app.on('ready', () => {
 })
 
 ipcMain.on('quit-and-install', (event) => {
-    autoUpdater.quitAndInstall()
+    autoUpdater.quitAndInstall(isSilent=true, isForceRunAfter=true)
 })
 
 // Quit when all windows are closed.

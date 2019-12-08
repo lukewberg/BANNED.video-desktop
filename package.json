@@ -1,6 +1,6 @@
 {
   "name": "BANNED.Video",
-  "version": "0.1.7-alpha",
+  "version": "0.1.6-alpha",
   "description": "The premier platform for accessing INFOWARS content!",
   "main": "main.js",
   "target": "electron",
@@ -52,8 +52,10 @@
       ]
     },
     "nsis": {
-      "perMachine": true,
-      "createDesktopShortcut": "always"
+      "perMachine": false,
+      "createDesktopShortcut": "always",
+      "oneClick": true,
+      "allowElevation": false
     }
   },
   "private": true,

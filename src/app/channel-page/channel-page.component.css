@@ -7,3 +7,25 @@
 .avatarImg:hover {
   box-shadow: rgba(0, 0, 0, .23) 10px 10px 6px;
 }
+
+.featuredVideo {
+  transform: perspective(1500px) rotateX(0) rotateY(-10deg) rotate(0) scale(1);
+  position: absolute;
+  right: 6%;
+  top: 40%;
+  background-color: aquamarine;
+  width: 40%;
+  height: 300%;
+  border-radius: 20px;
+}
+
+.featuredVideoDesc {
+  transform: perspective(1500px) rotateX(0) rotateY(10deg) rotate(0) scale(1);
+  position: absolute;
+  left: 90px;
+  top: 130%;
+  background-color: aquamarine;
+  width: 40%;
+  height: 210%;
+  border-radius: 20px;
+}
