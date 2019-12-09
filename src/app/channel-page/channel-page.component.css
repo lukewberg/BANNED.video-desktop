@@ -12,20 +12,63 @@
   transform: perspective(1500px) rotateX(0) rotateY(-10deg) rotate(0) scale(1);
   position: absolute;
   right: 6%;
-  top: 40%;
-  background-color: aquamarine;
+  top: 35%;
   width: 40%;
-  height: 300%;
+  height: 320%;
   border-radius: 20px;
+  z-index: 1;
+  transition-duration: .7s;
+  transform-origin:center;
+  background-size: cover;
+}
+
+.featuredVideo:hover {
+  transform: perspective(400px) rotateX(0) rotateY(0) rotate(0) scale(1.05);
+  border-radius: 15px;
 }
 
 .featuredVideoDesc {
-  transform: perspective(1500px) rotateX(0) rotateY(10deg) rotate(0) scale(1);
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   left: 90px;
-  top: 130%;
-  background-color: aquamarine;
-  width: 40%;
+  top: 160%;
+  width: 35%;
   height: 210%;
+  z-index: 1;
+  border-top: 4px solid #253746;
+  border-bottom: 4px solid #253746;
+}
+
+.featuredDesk {
+  transform: perspective(1500px) rotateX(70deg) rotateY(0deg) rotate(0) scale(1);
+  position: absolute;
+  right: -4%;
+  top: 270%;
+  background-color: #253746;
+  width: 60%;
+  height: 150%;
+  z-index: 0;
+}
+
+.featuredImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
   border-radius: 20px;
+  transition: all .5s cubic-bezier(.645, .045, .355, 1);
+  cursor: pointer;
+}
+
+.videoOptions {
+  transition: all .2s;
+}
+
+.videoOptions:hover {
+  border-bottom: 4px solid black;
 }

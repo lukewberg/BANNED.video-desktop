@@ -1,4 +1,4 @@
-<div style="width: 100%; height: 50%; overflow: hidden; position: fixed; z-index: -1;">
+<div *ngIf="channelData" style="width: 100%; height: 50%; overflow: hidden; position: fixed; z-index: -1;">
   <video [muted]="'true'" #video (timeupdate)="onTimeUpdate($event)" (loadedmetadata)="onMetadata($event, video)"
     *ngIf=" channelData?.featuredVideo !== null"
     style="background-size: cover; width: 100%; transform: translateY(-20%);" autoplay="autoplay"
@@ -15,13 +15,22 @@
     <div style="margin-left: 20%;">
       <h3 style="font-size: 2.5vw; font-weight: 700;">
         {{channelData?.title}}</h3>
-      <h3 *ngIf="channelData" style="font-size: 1.5vw; font-style: italic;">{{channelData?.summary | truncate: 60}}</h3>
-      <h3 style="font-size: 1vw; position: relative; left: -1%;">{{channelData?.showInfo?.times}}</h3>
+      <h3 *ngIf="channelData" style="font-size: 1.5vw; font-style: italic;">{{channelData?.summary | truncate: 44}}</h3>
+      <h3 style="font-size: 1vw; position: relative; left: -1%;">{{channelData?.showInfo?.times}}&nbsp;</h3>
       <div style="width: 100%; height: 100%;">
       </div>
     </div>
-    <div class="featuredVideoDesc"></div>
-    <div class="featuredVideo"></div>
+    <div class="featuredVideoDesc">
+      <h3 class="videoOptions" style="font-size: 2vw; font-weight: 700; font-style: italic; cursor: pointer;">Videos</h3>
+      <h3 class="videoOptions" style="font-size: 2vw; font-weight: 700; font-style: italic; cursor: pointer;">Playlists</h3>
+    </div>
+    <div class="featuredVideo">
+      <a *ngIf="channelData" [routerLink]="['/video', videos[0]?.videos[0]?._id, channelData?._id]">
+        <img *ngIf="videos" class="featuredImg"
+          src="{{channelData?.featuredVideo?.largeImage || videos[0]?.videos[0]?.largeImage}}">
+      </a>
+    </div>
+    <div class="featuredDesk"></div>
   </div>
   <div class="container-fluid" style="padding-left: 90px; padding-right: 4%; margin-bottom: 2%; margin-top: 2%;"
     *ngFor="let video of videos">

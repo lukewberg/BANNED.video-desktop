@@ -70,17 +70,35 @@ export class LivestreamComponent implements OnInit {
       return ((((-d + d.setHours(startTime, 0, 0, 0)) / 6e4) * 60) *60) *1000;
     }
 
+    getDay() {
+      return this.calcTime(-6).getDay();
+    }
+
   ngOnInit() {
     for (let show of this.showInfo){
-      var texasTime = this.calcTime(-6).getHours()
-      if ((texasTime >= show.startTime) && (texasTime < show.endTime)) {
+      var texasTime = this.calcTime(-6).getHours();
+      if ((texasTime >= show.startTime) && (texasTime < show.endTime) && (this.getDay() !== 0)) {
         console.log(show);
+        console.log('Normal weekday; normal show scheduling.')
         this.DataService.getChannel(show._id).subscribe(data => {
           this.channel = data.data.getChannel;
-        })
-      } else if (show.startTime > texasTime){
+        });
+      } else if (show.startTime > texasTime && (this.getDay() !== 0)) {
+        console.log('Normal weekday; normal show scheduling.')
         this.waitForNextShow(this.secondsToShow(show.startTime));
         console.log('Next show starts in: ' + this.secondsToShow(show.startTime)/60/60/1000 + ' minutes');
+        break;
+      }
+      if (this.getDay() === 0 && (texasTime >= 16) && (texasTime < 18)) {
+        console.log('Today is sunday, and the alex jones show is playing');
+        this.DataService.getChannel(this.showInfo[1]._id).subscribe(data => {
+          this.channel = data.data.getChannel;
+        });
+        break
+      } else if (texasTime < 16 && this.getDay() === 0) {
+        console.log('Today is sunday, and the alex jones show is playing');
+        this.waitForNextShow(this.secondsToShow(16));
+        console.log('Next show starts in: ' + this.secondsToShow(show.startTime) / 60 / 60 / 1000 + ' minutes');
         break;
       }
     }
