@@ -40,7 +40,7 @@ export class LivestreamComponent implements OnInit {
     setTimeout( () => {
       console.log(timeout)
       for (let show of this.showInfo) {
-        var texasTime = this.calcTime(-6).getHours()
+        var texasTime = this.calcTime(-6).getHours();
         if ((texasTime >= show.startTime) && (texasTime < show.endTime)) {
           console.log(show + 'sleep function');
           this.DataService.getChannel(show._id).subscribe(data => {
@@ -84,7 +84,6 @@ export class LivestreamComponent implements OnInit {
           this.channel = data.data.getChannel;
         });
       } else if (show.startTime > texasTime && (this.getDay() !== 0)) {
-        console.log('Normal weekday; normal show scheduling.')
         this.waitForNextShow(this.secondsToShow(show.startTime));
         console.log('Next show starts in: ' + this.secondsToShow(show.startTime)/60/60/1000 + ' minutes');
         break;

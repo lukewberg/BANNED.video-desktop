@@ -22,9 +22,9 @@ export class HomePageComponent implements OnInit {
       this.channels = this.dataService.channels;
       this.navigationChannels = this.dataService.navigationChannels;
     } else {
-      this.dataService.getActiveHomeLayout().subscribe(data => {
+      this.dataService.getActiveSideBarChannels().subscribe(data => {
         if (data !== undefined) {
-          for (const channel of data.data.getActiveHomeLayout.channels) {
+          for (const channel of data.data.getActiveHomeLayout.navigationChannels) {
             if (channel) {
               this.dataService.getDisplayChannel(channel._id).subscribe(data => {
                 this.channels.push(data.data.getChannel);

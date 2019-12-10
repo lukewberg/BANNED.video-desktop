@@ -43,7 +43,7 @@ export class DataService {
   getActiveHomeLayout() {
     return this.httpClient.post<getActiveHomeLayout>(this.APIUrl, JSON.stringify({
       operationName: 'GetActiveHomeLayout',
-      query: 'query GetActiveHomeLayout {  getActiveHomeLayout {    _id    featuredVideos {      _id      title      __typename    }    channels {      _id      title      videos {        _id        __typename      }      __typename    }    playlists {      _id      title      channel {        _id        __typename      }      videos {        _id        __typename      }      __typename    }    navigationChannels {      _id      title      avatar      __typename    }    pageItemsOrder    __typename  }}',
+      query: 'query GetActiveHomeLayout {  getActiveHomeLayout {    _id    featuredVideos {      _id      title      __typename    }    __typename  }}',
       variables: {}
     }), {
       headers: {
@@ -55,7 +55,7 @@ export class DataService {
   getActiveSideBarChannels() {
     return this.httpClient.post<GetActiveSideBarChannels>(this.APIUrl, JSON.stringify({
       operationName: 'GetActiveSideBarChannels',
-      query: 'query GetActiveSideBarChannels {  getActiveHomeLayout {    _id    navigationChannels {      _id      title      avatar      __typename    }    pageItemsOrder    __typename  }}',
+      query: 'query GetActiveSideBarChannels {  getActiveHomeLayout {    _id    navigationChannels {      _id      title      avatar      __typename    }}}',
       variables: {}
     }), {
       headers: {

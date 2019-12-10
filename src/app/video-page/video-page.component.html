@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div style="position: absolute; top: 55px; right: 0; width: 30%;" class="container">
+  <div style="position: absolute; top: 65px; right: 0; width: 30%;" class="container">
     <div class="row" *ngFor="let video of channel?.data?.getChannel.videos" style="margin-bottom: 1em;">
       <div class="col-lg">
         <a [routerLink]="['/video', video._id, video.channel._id]">
