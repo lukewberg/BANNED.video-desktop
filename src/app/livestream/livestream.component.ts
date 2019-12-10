@@ -67,7 +67,7 @@ export class LivestreamComponent implements OnInit {
 
   secondsToShow(startTime: number) {
       var d = this.calcTime(-6);
-      return ((((-d + d.setHours(startTime, 0, 0, 0)) / 6e4) * 60) *60) *1000;
+      return ((((-d + d.setHours(startTime, 0, 0, 0)) / 6e4) * 60)) * 1000;
     }
 
     getDay() {
@@ -85,7 +85,8 @@ export class LivestreamComponent implements OnInit {
         });
       } else if (show.startTime > texasTime && (this.getDay() !== 0)) {
         this.waitForNextShow(this.secondsToShow(show.startTime));
-        console.log('Next show starts in: ' + this.secondsToShow(show.startTime)/60/60/1000 + ' minutes');
+        console.log(this.secondsToShow(show.startTime))
+        console.log('Next show starts in: ' + this.secondsToShow(show.startTime)/60/1000 + ' minutes');
         break;
       }
       if (this.getDay() === 0 && (texasTime >= 16) && (texasTime < 18)) {
