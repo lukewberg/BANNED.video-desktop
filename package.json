@@ -52,10 +52,9 @@
       ]
     },
     "nsis": {
-      "perMachine": false,
+      "perMachine": true,
       "createDesktopShortcut": "always",
-      "oneClick": true,
-      "allowElevation": false
+      "oneClick": true
     }
   },
   "private": true,
