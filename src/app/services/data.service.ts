@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { getActiveHomeLayout } from './interfaces/getActiveHomeLayout';
 import { getHomeFeaturedVideos } from './interfaces/getHomeFeaturedVideos';
 import { getDisplayChannel } from './interfaces/getDisplayChannel';
 import { GetChannelRootObject } from './interfaces/getChannel';
 import { GetActiveSideBarChannels } from './interfaces/getActiveSideBarChannels';
 import { SearchRootObject } from './interfaces/Search';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -20,8 +21,13 @@ export class DataService {
   public  featuredVideos: any;
   public  channels = [];
   public  navigationChannels: any;
+  public activeChannelId: string;
+  public activeChannelVideos = [];
+  public activeChannelPlaylists: any;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
+
+  private routerObservable = new Subject();
 
   Search(query: string, offset: number){
     return this.httpClient.post<SearchRootObject>(this.APIUrl, JSON.stringify({
@@ -108,9 +114,11 @@ export class DataService {
   }
 
   getChannel(id) {
+    this.activeChannelId = id;
+    this.routerObservable.next(id);
     return this.httpClient.post<GetChannelRootObject>(this.APIUrl, JSON.stringify({
       operationName: 'GetChannel',
-      query: 'query GetChannel($id: String!) {  getChannel(id: $id) {    _id    title    summary    avatar    coverImage    showInfo {      times      phone      __typename    }    featuredVideo {      ...DisplayVideoFields      __typename      directUrl    }    liveStreamVideo {      ...DisplayVideoFields      streamUrl      __typename    }    playlists {      _id      title      videos {        _id        __typename      }      __typename    }    __typename  }}fragment DisplayVideoFields on Video {  _id  title  summary  playCount  largeImage  embedUrl  published  channel {    _id    title    avatar    __typename  }  createdAt  __typename}',
+      query: 'query GetChannel($id: String!) {  getChannel(id: $id) {    _id    title    summary    avatar    coverImage    showInfo {      times      phone      __typename    }    featuredVideo {      ...DisplayVideoFields      __typename      directUrl    }    liveStreamVideo {      ...DisplayVideoFields      streamUrl      __typename    }    videos {      _id      __typename      title      largeImage      channel {    _id    title    __typename  }}    playlists {      _id      title      videos {        channel {    _id    title    __typename  }        largeImage        title        _id        __typename      }      __typename    }    __typename  }}fragment DisplayVideoFields on Video {  _id  title  summary  playCount  largeImage  embedUrl  published  channel {    _id    title    avatar    __typename  }  createdAt  __typename}',
       variables: {
         'id': id
       }
@@ -121,19 +129,28 @@ export class DataService {
     })
   }
 
-  getChannelVideos(id, offset) {
+  getChannelVideos(offset) {
     return this.httpClient.post<GetChannelRootObject>(this.APIUrl, JSON.stringify({
       operationName: 'GetChannelVideos',
       query: 'query GetChannelVideos($id: String!, $offset: Float) {  getChannel(id: $id) {    _id    videos(offset: $offset) {      ...DisplayVideoFields      __typename    }    __typename  }}fragment DisplayVideoFields on Video {  _id  title  summary  playCount  largeImage  embedUrl  published  channel {    _id    title    avatar    __typename  }  createdAt  __typename}',
       variables: {
-        'id': id,
+        'id': this.activeChannelId,
         'offset': offset
       }
     }), {
       headers: {
         'content-type': 'application/json'
       }
+    }).subscribe( data => {
+      this.activeChannelVideos.push({
+        videos: data.data.getChannel.videos
+      });
+      return data;
     })
+  }
+
+  watchRoute(): Observable<any> {
+    return this.routerObservable.asObservable();
   }
 
   setChannels(object: object) {
@@ -147,4 +164,14 @@ export class DataService {
   setNavigationChannels(object: object) {
     this.navigationChannels = object;
   }
+
+  clearActiveChannelVideos() {
+    this.activeChannelVideos = [];
+    console.log(this.activeChannelVideos);
+  }
+
+  clearActiveChannelPlaylists() {
+    this.activeChannelPlaylists = undefined;
+  }
+
 }

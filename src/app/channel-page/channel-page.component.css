@@ -76,6 +76,20 @@
   cursor: pointer;
 }
 
+.videoOptions h3 {
+  border-bottom: none;
+  color: #253746;
+}
+
 .videoOptions h3:hover {
   border-bottom: 4px solid #253746;
+}
+
+a {
+  text-decoration: none;
+}
+
+.videoOptionsActive h3 {
+  border-bottom: 4px solid #253746;
+  text-decoration: none;
 }

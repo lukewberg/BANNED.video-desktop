@@ -12,38 +12,30 @@ export class ChannelPageComponent implements OnInit {
 
   channelData: GetChannel;
   offset = 0;
-  videos = [];
+  videos: any;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe( data => {
+      this.dataService.clearActiveChannelVideos();
+      this.dataService.clearActiveChannelPlaylists();
+      this.offset = 0;
       this.dataService.getChannel(data.get('channel_id')).subscribe(
         data => {
+          this.dataService.getChannelVideos(this.offset);
           this.channelData = data.data.getChannel;
+          this.dataService.activeChannelPlaylists = data.data.getChannel.playlists;
         }
       );
-      this.dataService.getChannelVideos(data.get('channel_id'), this.offset).subscribe(
-        data => {
-          this.videos = [];
-          this.videos.push({
-            videos: data.data.getChannel.videos
-          });
-        }
-      );
+      this.videos = this.dataService.activeChannelVideos;
     });
   }
 
   onScroll() {
     if (this.channelData !== undefined) {
       this.offset += 10;
-      this.dataService.getChannelVideos(this.channelData._id, this.offset).subscribe(
-        data => {
-          this.videos.push({
-            videos: data.data.getChannel.videos
-          });
-        }
-      );
+      this.dataService.getChannelVideos(this.offset);
     }
   }
 

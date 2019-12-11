@@ -3,7 +3,7 @@
   <div class="container-fluid" *ngFor="let channel of channels" style="padding-left: 90px; padding-right: 4%;">
     <div>
       <div class="container-fluid" style="margin-bottom: .6em; position: relative;">
-        <a [routerLink]="['/channel', channel._id]">
+        <a [routerLink]="['/channel', channel._id, 'videos']">
           <img class="avatarImg" src="{{channel?.videos[0]?.channel?.avatar}}" width="9%" height="9%"
             style="border-radius: 50%; border: 4px solid white;">
         </a>

@@ -1,10 +1,10 @@
 <div class="sidebar">
     <div class="dashDiv">
       <a [routerLink]="['']">
-        <mat-icon>dashboard</mat-icon>
+        <mat-icon>home</mat-icon>
       </a>
     </div>
-    <a *ngFor="let channel of channels" [routerLink]="['/channel', channel._id]">
+    <a *ngFor="let channel of channels" [routerLink]="['/channel', channel._id, 'videos']">
         <div class="channelIcon" [ngStyle]="{'background-image': 'url(' + channel?.avatar + ')'}"
           style="width: 45px; height: 45px; margin: 0 auto; margin-bottom: 1em; background-size: cover;">
         </div>

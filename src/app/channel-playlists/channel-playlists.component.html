@@ -1,0 +1,6 @@
+<div class="container-fluid" style="padding-left: 90px; padding-right: 4%; margin-bottom: 2%; margin-top: 2%;"
+  *ngFor="let playlist of playlists">
+  <h3 style="font-size: 2.5vw; font-weight: 700;">
+    {{playlist?.title}}</h3>
+  <app-channel-section [channel]="playlist"></app-channel-section>
+</div>

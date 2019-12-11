@@ -27,6 +27,8 @@ import { NgxElectronModule } from 'ngx-electron';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FormsModule } from '@angular/forms';
 import { LivestreamComponent } from './livestream/livestream.component';
+import { ChannelVideosComponent } from './channel-videos/channel-videos.component';
+import { ChannelPlaylistsComponent } from './channel-playlists/channel-playlists.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { LivestreamComponent } from './livestream/livestream.component';
     SidebarComponent,
     SearchPageComponent,
     LivestreamComponent,
+    ChannelVideosComponent,
+    ChannelPlaylistsComponent,
 
   ],
   imports: [
