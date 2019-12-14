@@ -2,7 +2,8 @@
     <div class="row" style="width: 100%; height: 100%;">
       <div class="col-lg-auto" style="width: 70%; height: 100%;">
         <vg-player class="videoImg" style="width: 100%; height: 100%; margin-bottom: 1em; border-radius: 8px;">
-          <video *ngIf="data" style="width: 100%; height: 100%;" #media #vgHls="vgHls" [vgMedia]="media"
+          <video *ngIf="data" style="width: 100%; height: 100%;" #media #vgHls="vgHls"
+            [vgMedia]="media"
             [vgHls]="data?.data?.getVideo?.directUrl" id="singleVideo" preload="auto" controls crossorigin>
           </video>
         </vg-player>
@@ -25,7 +26,7 @@
   <div style="position: absolute; top: 65px; right: 0; width: 30%;" class="container">
     <div class="row" *ngFor="let video of channel?.data?.getChannel.videos" style="margin-bottom: 1em;">
       <div class="col-lg">
-        <a [routerLink]="['/video', video._id, video.channel._id, 'videos']">
+        <a [routerLink]="['/video', video._id, video.channel._id]">
           <img class="videoImg" src="{{video.largeImage}}" width="100%"
             style="background-size: cover; border-radius: 8px; position: relative;">
         </a>

@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getActiveSideBarChannels().subscribe( data => {
-      this.channels = data.data.getActiveHomeLayout.navigationChannels;
+      this.channels = data.data.getActiveConfig.navigationChannels;
     })
   }
 

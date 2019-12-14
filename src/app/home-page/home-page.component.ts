@@ -24,7 +24,7 @@ export class HomePageComponent implements OnInit {
     } else {
       this.dataService.getActiveSideBarChannels().subscribe(data => {
         if (data !== undefined) {
-          for (const channel of data.data.getActiveHomeLayout.navigationChannels) {
+          for (const channel of data.data.getActiveConfig.navigationChannels) {
             if (channel) {
               this.dataService.getDisplayChannel(channel._id).subscribe(data => {
                 this.channels.push(data.data.getChannel);
@@ -33,8 +33,8 @@ export class HomePageComponent implements OnInit {
             }
           }
         }
-        this.navigationChannels = data.data.getActiveHomeLayout.navigationChannels;
-        this.dataService.setNavigationChannels(data.data.getActiveHomeLayout.navigationChannels);
+        this.navigationChannels = data.data.getActiveConfig.navigationChannels;
+        this.dataService.setNavigationChannels(data.data.getActiveConfig.navigationChannels);
       });
       this.dataService.getHomeFeaturedVideos().subscribe(data => {
         this.featuredVideos = data.data.getActiveHomeLayout.featuredVideos;

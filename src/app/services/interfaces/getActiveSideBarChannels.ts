@@ -5,15 +5,14 @@ export interface NavigationChannel {
   __typename: string;
 }
 
-export interface GetActiveHomeLayout {
+export interface GetActiveConfig {
   _id: string;
   navigationChannels: NavigationChannel[];
-  pageItemsOrder: string[];
   __typename: string;
 }
 
 export interface Data {
-  getActiveHomeLayout: GetActiveHomeLayout;
+  getActiveConfig: GetActiveConfig;
 }
 
 export interface CacheControl {
@@ -25,7 +24,7 @@ export interface Extensions {
   cacheControl: CacheControl;
 }
 
-export interface GetActiveSideBarChannels {
+export interface GetActiveSidebarChannels {
   data: Data;
   extensions: Extensions;
 }

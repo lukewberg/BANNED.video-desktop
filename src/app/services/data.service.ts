@@ -4,7 +4,7 @@ import { getActiveHomeLayout } from './interfaces/getActiveHomeLayout';
 import { getHomeFeaturedVideos } from './interfaces/getHomeFeaturedVideos';
 import { getDisplayChannel } from './interfaces/getDisplayChannel';
 import { GetChannelRootObject } from './interfaces/getChannel';
-import { GetActiveSideBarChannels } from './interfaces/getActiveSideBarChannels';
+import { GetActiveSidebarChannels } from './interfaces/getActiveSideBarChannels';
 import { SearchRootObject } from './interfaces/Search';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -59,9 +59,9 @@ export class DataService {
   }
 
   getActiveSideBarChannels() {
-    return this.httpClient.post<GetActiveSideBarChannels>(this.APIUrl, JSON.stringify({
+    return this.httpClient.post<GetActiveSidebarChannels>(this.APIUrl, JSON.stringify({
       operationName: 'GetActiveSideBarChannels',
-      query: 'query GetActiveSideBarChannels {  getActiveHomeLayout {    _id    navigationChannels {      _id      title      avatar      __typename    }}}',
+      query: 'query GetActiveSideBarChannels {  getActiveConfig {    _id    navigationChannels {      _id      title      avatar      __typename    }    __typename  }}',
       variables: {}
     }), {
       headers: {
