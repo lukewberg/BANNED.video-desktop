@@ -13,21 +13,23 @@ export class HeaderComponent implements OnInit {
   query: string;
   win: any;
   winMax = true;
-  maxRestoreSymbol = `\uEADE`
+  maxRestoreSymbol = ``
+  win32: boolean;
 
   constructor( private Router: Router, private ElectronService: ElectronService) { }
 
   maxMin() {
     if (this.winMax === false) {
       this.win.maximize();
-      this.maxRestoreSymbol = `\uEAE2`;
+      this.maxRestoreSymbol = ``;
     } else {
       this.win.unmaximize();
-      this.maxRestoreSymbol = `\uEADE`;
+      this.maxRestoreSymbol = ``;
     }
   }
 
   ngOnInit() {
+    this.win32 = this.ElectronService.isWindows
     this.win = this.ElectronService.remote.getCurrentWindow();
     this.ElectronService.ipcRenderer.on('update-available', () => {
       this.updateStatus = 'yellow';

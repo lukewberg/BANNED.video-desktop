@@ -1,5 +1,5 @@
 <div class="header">
-  <div id="window-controls">
+  <div *ngIf="win32" id="window-controls">
     <div (click)="this.win.minimize()" class="button" id="min-button">
       <span>&#xE921;</span>
     </div>
