@@ -6,6 +6,7 @@ import { getDisplayChannel } from './interfaces/getDisplayChannel';
 import { GetChannelRootObject } from './interfaces/getChannel';
 import { GetActiveSidebarChannels } from './interfaces/getActiveSideBarChannels';
 import { SearchRootObject } from './interfaces/Search';
+import { GetActiveConfig } from './interfaces/getActiveConfig';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -18,9 +19,9 @@ export class DataService {
 
   private readonly APIUrl = 'https://vod-api.infowars.com/graphql';
 
-  public  featuredVideos: any;
-  public  channels = [];
-  public  navigationChannels: any;
+  public featuredVideos: any;
+  public channels = [];
+  public navigationChannels: any;
   public activeChannelId: string;
   public activeChannelVideos = [];
   public activeChannelPlaylists: any;
@@ -28,6 +29,18 @@ export class DataService {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   private routerObservable = new Subject();
+
+  getActiveConfig(){
+    return this.httpClient.post<GetActiveConfig>(this.APIUrl, JSON.stringify({
+      operationName: 'GetActiveConfig',
+      query: 'query GetActiveConfig {  getActiveConfig {    _id    featuredVideos {      _id      title      __typename    largeImage    summary    channel {_id    title    avatar    __typename}}    __typename  }}',
+      variables: {}
+    }), {
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+  }
 
   Search(query: string, offset: number){
     return this.httpClient.post<SearchRootObject>(this.APIUrl, JSON.stringify({

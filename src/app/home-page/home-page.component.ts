@@ -36,9 +36,9 @@ export class HomePageComponent implements OnInit {
         this.navigationChannels = data.data.getActiveConfig.navigationChannels;
         this.dataService.setNavigationChannels(data.data.getActiveConfig.navigationChannels);
       });
-      this.dataService.getHomeFeaturedVideos().subscribe(data => {
-        this.featuredVideos = data.data.getActiveHomeLayout.featuredVideos;
-        this.dataService.setFeaturedVideos(data.data.getActiveHomeLayout.featuredVideos);
+      this.dataService.getActiveConfig().subscribe(data => {
+        this.featuredVideos = data.data.getActiveConfig.featuredVideos;
+        this.dataService.setFeaturedVideos(data.data.getActiveConfig.featuredVideos);
       });
     }
   }

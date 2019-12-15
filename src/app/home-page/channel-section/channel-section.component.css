@@ -1,3 +1,7 @@
+.row {
+  transition: all 1s;
+}
+
 .col {
     padding-left: 10px;
     padding-right: 10px;

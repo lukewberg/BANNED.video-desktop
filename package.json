@@ -1,6 +1,6 @@
 {
   "name": "BANNED.Video",
-  "version": "0.1.9-alpha",
+  "version": "0.1.11-alpha",
   "description": "The premier platform for accessing INFOWARS content!",
   "main": "main.js",
   "target": "electron",

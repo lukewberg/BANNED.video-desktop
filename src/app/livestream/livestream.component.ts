@@ -15,22 +15,23 @@ export class LivestreamComponent implements OnInit {
     {
       startTime: 8,
       endTime: 11,
-      _id: '5b92d71e03deea35a4c6cdef'
+      _id: '5b92d71e03deea35a4c6cdef',
+      avatar: '',
+      times: ''
     },
     {
       startTime: 11,
       endTime: 15,
-      _id: '5b885d33e6646a0015a6fa2d'
+      _id: '5b885d33e6646a0015a6fa2d',
+      avatar: '',
+      times: ''
     },
     {
       startTime: 15,
       endTime: 18,
-      _id: '5b9301172abf762e22bc22fd'
-    },
-    {
-      startTime: 19,
-      endTime: 21,
-      _id: '5d72c972f230520013554291'
+      _id: '5b9301172abf762e22bc22fd',
+      avatar: '',
+      times: ''
     }
   ]
 
@@ -76,6 +77,12 @@ export class LivestreamComponent implements OnInit {
 
   ngOnInit() {
     for (let show of this.showInfo){
+      this.showInfo.forEach( item => {
+        this.DataService.getChannel(item._id).subscribe(data => {
+          this.showInfo[this.showInfo.indexOf(item)].avatar = data.data.getChannel.avatar;
+          this.showInfo[this.showInfo.indexOf(item)].times = data.data.getChannel.showInfo.times;
+        });
+      });
       var texasTime = this.calcTime(-6).getHours();
       if ((texasTime >= show.startTime) && (texasTime < show.endTime) && (this.getDay() !== 0)) {
         console.log(show);
