@@ -22,6 +22,12 @@
     overflow-x: hidden;
 }
 
+h3 {
+  font-family: Roboto,
+  "Helvetica Neue",
+  sans-serif;
+}
+
 
 @keyframes shadow-pulse {
   0% {

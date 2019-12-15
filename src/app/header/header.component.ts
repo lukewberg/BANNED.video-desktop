@@ -11,13 +11,27 @@ export class HeaderComponent implements OnInit {
 
   updateStatus = 'white';
   query: string;
+  win: any;
+  winMax = true;
+  maxRestoreSymbol = `\uEADE`
 
   constructor( private Router: Router, private ElectronService: ElectronService) { }
 
+  maxMin() {
+    if (this.winMax === false) {
+      this.win.maximize();
+      this.maxRestoreSymbol = `\uEAE2`;
+    } else {
+      this.win.unmaximize();
+      this.maxRestoreSymbol = `\uEADE`;
+    }
+  }
+
   ngOnInit() {
+    this.win = this.ElectronService.remote.getCurrentWindow();
     this.ElectronService.ipcRenderer.on('update-available', () => {
       this.updateStatus = 'yellow';
-      console.log('app update available!!');
+      console.log('app update available!');
     });
 
     this.ElectronService.ipcRenderer.on('update-downloaded', () => {
