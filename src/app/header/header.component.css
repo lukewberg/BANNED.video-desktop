@@ -8,7 +8,7 @@
   align-items: center;
   position: fixed;
   background-color: #1e2022;
-  z-index: 2;
+  z-index: 10;
 }
 
 .logodiv {
@@ -33,6 +33,7 @@
   border: 1px solid rgb(48, 48, 48);
   padding-left: 15px;
   font-weight: bold;
+  -webkit-app-region: no-drag;
 }
 
 ::placeholder{
@@ -48,6 +49,7 @@
   text-align: center;
   width: 10%;
   cursor: pointer;
+  -webkit-app-region: no-drag;
 }
 
 .searchIcon:hover{
@@ -62,6 +64,7 @@
   width: 1.5em;
   cursor: pointer;
   height: 100%;
+  -webkit-app-region: no-drag;
 }
 
 .storeIcon:hover {
@@ -76,6 +79,7 @@
   width: 1.5em;
   cursor: pointer;
   height: 100%;
+  -webkit-app-region: no-drag;
 }
 
 .storeDiv {
@@ -84,6 +88,7 @@
   right: 10em;
   display: flex;
   flex-direction: row;
+  -webkit-app-region: no-drag;
 }
 
 .liveTV {
@@ -97,6 +102,7 @@
   width: 8%;
   cursor: pointer;
   outline: none;
+  -webkit-app-region: no-drag;
 }
 
 .liveTV:hover {
