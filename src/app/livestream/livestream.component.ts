@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment-timezone';
 import { GetChannel } from '../services/interfaces/getChannel';
 import { DataService } from '../services/data.service';
+import { fadeInOut } from '../animations/Animations';
 
 @Component({
   selector: 'app-livestream',
   templateUrl: './livestream.component.html',
-  styleUrls: ['./livestream.component.css']
+  styleUrls: ['./livestream.component.css'],
+  animations: [ fadeInOut() ]
 })
 export class LivestreamComponent implements OnInit {
   channel: GetChannel;

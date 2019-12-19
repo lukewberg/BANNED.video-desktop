@@ -5,7 +5,8 @@
       </a>
     </div>
     <a *ngFor="let channel of channels" [routerLink]="['/channel', channel._id, 'videos']">
-        <div class="channelIcon" [ngStyle]="{'background-image': 'url(' + channel?.avatar + ')'}"
+        <div [@simpleFadeAnimation]="'in'" class="channelIcon"
+          [ngStyle]="{'background-image': 'url(' + channel?.avatar + ')'}"
           style="width: 45px; height: 45px; margin: 0 auto; margin-bottom: 1em; background-size: cover;">
         </div>
     </a>

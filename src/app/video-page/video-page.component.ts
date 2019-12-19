@@ -2,14 +2,13 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { getDisplayChannel } from '../services/interfaces/getDisplayChannel';
-import { slideInOutAnimation } from '../animations/slideInOut';
+import { slideInOutAnimation } from '../animations/Animations';
 
 @Component({
   selector: 'app-video-page',
   templateUrl: './video-page.component.html',
   styleUrls: ['./video-page.component.css'],
   //animations: [slideInOutAnimation],
-  //host: {'[@slideInOutAnimation]': ''}
 })
 
 export class VideoPageComponent implements OnInit {

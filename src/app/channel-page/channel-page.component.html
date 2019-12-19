@@ -39,14 +39,15 @@ true}">
         </div>
       </div>
     </div>
-    <div class="featuredVideo">
+    <div *ngIf="channelData?.featuredVideo?.largeImage || videos[0]?.videos[0]?.largeImage"
+      [@slideInRightAnimation]="'in'" class="featuredVideo">
       <a *ngIf="videos[0]?.videos[0]"
         [routerLink]="['/video',channelData?.featuredVideo?._id || videos[0]?.videos[0]?._id, channelData?._id]">
         <img *ngIf="videos[0]?.videos[0]" class="featuredImg"
           src="{{channelData?.featuredVideo?.largeImage || videos[0]?.videos[0]?.largeImage}}">
       </a>
     </div>
-    <div class="featuredDesk"></div>
+    <div *ngIf="channelData" class="featuredDesk"></div>
   </div>
   <router-outlet></router-outlet>
 </div>

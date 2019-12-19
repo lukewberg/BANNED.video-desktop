@@ -1,25 +1,34 @@
-<div class="row">
-  <div class="col" *ngFor="let video of firstVideo" style="width: 100%; height: 100%;">
-    <a [routerLink]="['/video', video._id, video?.channel?._id]">
-      <img class="videoImg" src="{{video.largeImage}}">
-    </a>
+<div [@simpleFadeAnimation]="'in'">
+  <div class="row">
+    <div class="col" *ngFor="let video of firstVideo" style="width: 100%; height: 100%; margin-bottom: .5em;">
+      <h3 style="font-size: 1vw; font-weight: 500; position: absolute; left: 5%; bottom: -20%; z-index: 1;">
+        {{abbrNum(video.playCount, 2)}} views
+      </h3>
+      <a [routerLink]="['/video', video._id, video?.channel?._id]">
+        <img [@simpleFadeAnimation]="'in'" class="videoImg" src="{{video.largeImage}}">
+      </a>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col" *ngFor="let video of firstVideo">
-    <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em; height: 3em;">{{video.title | truncate : 70 : true}}
-    </h3>
+  <div class="row">
+    <div class="col" *ngFor="let video of firstVideo">
+      <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em; height: 3em;">
+        {{video.title | truncate : 70 : true}}
+      </h3>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col" *ngFor="let video of secondVideo" style="margin-top: 1em; width: 100%; height: 100%;">
-    <a [routerLink]="['/video', video._id, video?.channel?._id]">
-      <img class="videoImg" src="{{video.largeImage}}">
-    </a>
+  <div class="row">
+    <div class="col" *ngFor="let video of secondVideo" style="margin-top: 1em; width: 100%; height: 100%; margin-bottom: .5em;">
+      <h3 style="font-size: 1vw; font-weight: 500; position: absolute; left: 5%; bottom: -20%; z-index: 1;">
+        {{abbrNum(video.playCount, 2)}} views
+      </h3>
+      <a [routerLink]="['/video', video._id, video?.channel?._id]">
+        <img [@simpleFadeAnimation]="'in'" class="videoImg" src="{{video.largeImage}}">
+      </a>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col" *ngFor="let video of secondVideo">
-    <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em;">{{video.title | truncate : 70 : true}}</h3>
+  <div class="row">
+    <div class="col" *ngFor="let video of secondVideo">
+      <h3 style="font-size: 1.1vw; font-weight: 700; margin-top: 1em;">{{video.title | truncate : 70 : true}}</h3>
+    </div>
   </div>
 </div>

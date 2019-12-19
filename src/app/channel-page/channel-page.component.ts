@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { GetChannel } from '../services/interfaces/getChannel';
+import { fadeInOut, slideInRight } from '../animations/Animations'
 
 @Component({
   selector: 'app-channel-page',
   templateUrl: './channel-page.component.html',
-  styleUrls: ['./channel-page.component.css']
+  styleUrls: ['./channel-page.component.css'],
+  animations: [fadeInOut(), slideInRight() ]
 })
 export class ChannelPageComponent implements OnInit {
 
@@ -20,6 +22,9 @@ export class ChannelPageComponent implements OnInit {
     this.route.paramMap.subscribe( data => {
       this.dataService.clearActiveChannelVideos();
       this.dataService.clearActiveChannelPlaylists();
+      if (this.channelData !== undefined) {
+        delete this.channelData.featuredVideo;
+      }
       this.offset = 0;
       this.dataService.getChannel(data.get('channel_id')).subscribe(
         data => {
