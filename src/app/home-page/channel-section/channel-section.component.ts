@@ -11,17 +11,16 @@ import { fadeInOut } from '../../animations/Animations';
 export class ChannelSectionComponent implements OnInit {
 
   @Input() channel: GetChannel;
-  firstVideo: any;
-  secondVideo: any;
+  videos: any;
   status = true;
 
   constructor() { }
 
   ngOnInit() {
-    if (this.firstVideo && this.secondVideo){
+    if (this.videos){
+      return
     } else {
-      this.firstVideo = this.channel.videos.slice(0, 5);
-      this.secondVideo = this.channel.videos.slice(5, 10);
+      this.videos = this.channel.videos;
     }
   }
 

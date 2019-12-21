@@ -16,6 +16,7 @@ export class VideoPageComponent implements OnInit {
   channel: getDisplayChannel;
   channelId: any;
   videoId: any;
+  displayStatus: boolean = true;
 
   constructor(private route: ActivatedRoute, private DataService: DataService) {}
 ngOnInit() {

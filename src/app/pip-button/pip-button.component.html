@@ -1,0 +1,5 @@
+<div (click)="startPip()" (mouseenter)="displayStatus = true" class="pipDiv"
+  [ngStyle]="{'opacity': displayStatus == true ? '1' : '0', 'left': left, 'right': right, 'top': top, 'bottom': bottom}">
+  <img src="./assets/picture_in_picture-24px.svg"
+    style="width: 80%; margin-left: auto; margin-right: auto; fill: white;">
+</div>

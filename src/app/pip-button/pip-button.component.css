@@ -1,0 +1,16 @@
+.pipDiv {
+  transition: all .5s;
+  position: absolute;
+  border-radius: 10px;
+  width: 4vw;
+  height: 3.5vw;
+  background-color: #253746;
+  display: flex;
+  cursor: pointer;
+  border: 2px solid transparent;
+  z-index: 1;
+}
+
+.pipDiv:hover {
+  border-color: #00B4E4;
+}
