@@ -2,10 +2,11 @@
   transition: all 1s;
 }
 
-.col {
+.rowItem {
     padding-left: 10px;
     padding-right: 10px;
     background-color: transparent;
+    margin-bottom: 6.5vw;
 }
 
 .avatarImg{

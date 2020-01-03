@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { LivestreamComponent } from './livestream/livestream.component';
 import { ChannelVideosComponent } from './channel-videos/channel-videos.component';
 import { ChannelPlaylistsComponent } from './channel-playlists/channel-playlists.component';
+import { PipButtonComponent } from './pip-button/pip-button.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ChannelPlaylistsComponent } from './channel-playlists/channel-playlists
     LivestreamComponent,
     ChannelVideosComponent,
     ChannelPlaylistsComponent,
+    PipButtonComponent,
 
   ],
   imports: [

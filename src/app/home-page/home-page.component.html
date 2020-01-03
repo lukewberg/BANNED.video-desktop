@@ -1,6 +1,6 @@
 <div *ngIf="featuredVideos" style="width: 100%; height: 100%;">
   <app-news-stack [news]="featuredVideos"></app-news-stack>
-  <div class="container-fluid" *ngFor="let channel of channels" style="padding-left: 90px; padding-right: 4%;">
+  <div class="container-fluid" *ngFor="let channel of channels" style="padding-left: 90px; padding-right: 2%;">
     <div>
       <div class="container-fluid" style="margin-bottom: .6em; position: relative;">
         <a [routerLink]="['/channel', channel._id, 'videos']">

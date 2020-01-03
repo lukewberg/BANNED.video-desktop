@@ -22,7 +22,7 @@
       LIVE TV</h3>
   </div>
   <div style="display: flex; align-items: center; width: 30%; height: 70%; margin: 0 auto;">
-    <input [(ngModel)]="query" class="search" placeholder="Search" type="text">
+    <input [(ngModel)]="query" class="search" placeholder="Search" type="text" (keyup.enter)="Search()">
     <mat-icon (click)="Search()" class="searchIcon">search</mat-icon>
   </div>
   <div class="storeDiv">
