@@ -7,10 +7,9 @@
   background-color: #253746;
   display: flex;
   cursor: pointer;
-  border: 2px solid transparent;
   z-index: 1;
 }
 
 .pipDiv:hover {
-  border-color: #00B4E4;
+  background-color: #00B4E4;
 }
