@@ -1,5 +1,5 @@
 # BANNED.VIDEO Desktop
-![BANNED.VIDEO](Screen\ Shot\ 2020-01-03\ at\ 12.57.29\ PM.png)
+![BANNED.VIDEO](screenshots/Screen\ Shot\ 2020-01-03\ at\ 12.57.29\ PM.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
