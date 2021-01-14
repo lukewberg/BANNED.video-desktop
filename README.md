@@ -1,4 +1,4 @@
-# BANNED.VIDEO Desktop
+# BANNED.VIDEO Desktop (Ironic Gag Project)
 ![BANNED.VIDEO](screenshots/Screen&#32;Shot&#32;2020-01-03&#32;at&#32;12.57.29&#32;PM.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
